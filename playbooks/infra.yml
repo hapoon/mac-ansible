@@ -1,0 +1,23 @@
+---
+- hosts: 'local'
+  connection: local
+  vars:
+    brew_packages:
+      - terraform
+    brew_cask_packages:
+      - iterm2
+  tasks:
+    - name: Update Homebrew
+      homebrew:
+        update_homebrew: yes
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: "present"
+    - name: Install Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ item }}"
+        state: "present"
+        install_options: "appdir=/Applications"
+        accept_external_apps: yes
+      with_items: "{{ brew_cask_packages }}"
