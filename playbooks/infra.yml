@@ -3,6 +3,7 @@
   connection: local
   vars:
     brew_packages:
+      - awscli
       - terraform
     brew_cask_packages:
       - iterm2
