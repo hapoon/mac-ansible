@@ -4,6 +4,7 @@
   vars:
     brew_packages:
       - git
+      - git-secrets
       - jq
       - zsh
       - zsh-syntax-highlighting
@@ -29,3 +30,8 @@
         install_options: "appdir=/Applications"
         accept_external_apps: yes
       with_items: "{{ brew_cask_packages }}"
+    - name: Setup git secrets
+      shell: |
+        git secrets --register-aws --global
+        git secrets --install ~/.git-templates/git-secrets
+        git config --global init.templatedir '~/.git-templates/git-secrets'
