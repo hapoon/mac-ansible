@@ -8,7 +8,13 @@ Macの初期環境設定で自動化できる部分をansibleで設定する
 
 ## Usage
 
+共通設定だけを自動構築する場合
 ```
-% ansible-playbook playbooks/work.yml
+% ansible-playbook playbooks/default.yml
+```
+
+SRE向けに自動構築する場合
+```
+% ansible-playbook playbooks/sre.yml
 ```
 
