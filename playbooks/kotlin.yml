@@ -3,19 +3,10 @@
   connection: local
   vars:
     brew_packages:
-      - git
-      - git-secrets
-      - jq
-      - tree
-      - zsh
-      - zsh-syntax-highlighting
-      - anyenv
-      - direnv
+      - gradle
     brew_cask_packages:
-      - alfred
-      - docker
-      - iterm2
-      - visual-studio-code
+      - kotlin-native
+      - intellij-idea-ce
   tasks:
     - name: Update Homebrew
       homebrew:
@@ -31,8 +22,3 @@
         install_options: "appdir=/Applications"
         accept_external_apps: yes
       with_items: "{{ brew_cask_packages }}"
-    - name: Setup git secrets
-      shell: |
-        git secrets --register-aws --global
-        git secrets --install ~/.git-templates/git-secrets
-        git config --global init.templatedir '~/.git-templates/git-secrets'
