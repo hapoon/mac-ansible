@@ -2,6 +2,8 @@
 - hosts: 'local'
   connection: local
   vars:
+    brew_taps:
+      - sanemat/font
     brew_packages:
       - git
       - git-secrets
@@ -12,12 +14,18 @@
       - peco
       - anyenv
       - direnv
+      - ricty
     brew_cask_packages:
       - alfred
       - docker
       - iterm2
       - visual-studio-code
   tasks:
+    - name: Add Homebrew Tap Repository
+      homebrew_tap: 
+        name: "{{ item }}"
+        state: "present"
+      with_items: "{{ brew_taps }}"
     - name: Update Homebrew
       homebrew:
         update_homebrew: yes
