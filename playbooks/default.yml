@@ -9,6 +9,7 @@
       - tree
       - zsh
       - zsh-syntax-highlighting
+      - peco
       - anyenv
       - direnv
     brew_cask_packages:
