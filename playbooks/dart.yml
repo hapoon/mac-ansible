@@ -1,0 +1,22 @@
+---
+- hosts: 'local'
+  connection: local
+  vars:
+    brew_taps:
+      - dart-lang/dart
+    brew_packages:
+      - dart
+  tasks:
+    - name: Add Homebrew Tap Repository
+      homebrew_tap:
+        name: "{{ item }}"
+        state: "present"
+      with_items: "{{ brew_taps }}"
+    - name: Update Homebrew
+      homebrew:
+        update_homebrew: yes
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: "present"
+
