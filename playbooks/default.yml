@@ -21,6 +21,7 @@
       - iterm2
       - visual-studio-code
       - keybase
+      - postman
   tasks:
     - name: Add Homebrew Tap Repository
       homebrew_tap: 
