@@ -11,6 +11,8 @@
       - tree
       - zsh
       - zsh-syntax-highlighting
+      - gnupg
+      - pinentry-mac
       - peco
       - anyenv
       - direnv
