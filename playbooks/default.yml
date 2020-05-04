@@ -27,6 +27,7 @@
       - visual-studio-code
       - keybase
       - postman
+      - authy
   tasks:
     - name: Add Homebrew Tap Repository
       homebrew_tap: 
