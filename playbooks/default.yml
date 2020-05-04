@@ -22,6 +22,7 @@
     brew_cask_packages:
       - alfred
       - docker
+      - google-chrome
       - iterm2
       - visual-studio-code
       - keybase
