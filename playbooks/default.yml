@@ -21,6 +21,7 @@
       - dive
     brew_cask_packages:
       - alfred
+      - biscuit
       - docker
       - google-chrome
       - iterm2
