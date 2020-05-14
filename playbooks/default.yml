@@ -28,6 +28,7 @@
       - visual-studio-code
       - keybase
       - postman
+      - slack
       - authy
   tasks:
     - name: Add Homebrew Tap Repository
