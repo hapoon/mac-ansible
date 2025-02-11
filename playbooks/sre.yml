@@ -1,6 +1,0 @@
----
-- name: Setup default settings
-  import_playbook: default.yml
-- name: Setup infra settings
-  import_playbook: infra.yml
-
