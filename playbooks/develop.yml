@@ -1,0 +1,65 @@
+---
+- hosts: 'local'
+  connection: local
+  vars:
+    brew_packages:
+      - git
+      - git-delta
+      - git-secrets
+      - jq
+      - tree
+      - zsh
+      - zsh-autocomplete
+      - zsh-syntax-highlighting
+      - gnupg
+      - pinentry-mac
+      - java
+      - tenv
+      - bat
+      - eza
+      - fd
+      - anyenv
+      - graphviz
+    brew_cask_packages:
+      - alfred
+      - arc
+      - bitwarden
+      - docker
+      - firefox
+      - font-hackgen-nerd
+      - ghostty
+      - google-chrome
+      - notion
+      - notion-calendar
+      - orbstack
+      - slack
+      - visual-studio-code
+    anyenv_envs:
+      - nodenv
+      - goenv
+      - pyenv
+      - jenv
+  tasks:
+    - name: Update Homebrew
+      homebrew:
+        update_homebrew: yes
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: "present"
+    - name: Install Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ item }}"
+        state: "present"
+        install_options: "appdir=/Applications"
+        accept_external_apps: yes
+      with_items: "{{ brew_cask_packages }}"
+    - name: Setup git secrets
+      shell: |
+        git secrets --register-aws --global
+        git secrets --install ~/.git-templates/git-secrets
+        git config --global init.templatedir '~/.git-templates/git-secrets'
+    - name: Install *envs
+      shell: |
+        anyenv install -s {{item}}
+      with_items: "{{anyenv_envs}}"
